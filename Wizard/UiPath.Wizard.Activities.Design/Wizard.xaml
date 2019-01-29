@@ -1,0 +1,64 @@
+﻿<sap:WorkflowElementDialog x:Class="UiPath.Wizard.Activities.Design.Wizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+        xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+        xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation"
+        xmlns:p="clr-namespace:UiPath.Wizard.Activities.Design.Properties"
+        xmlns:local="clr-namespace:UiPath.Wizard.Activities.Design"
+        Title="{x:Static p:Resources.WizardTitle}"  WindowResizeMode="NoResize"  DataContext="{Binding RelativeSource={RelativeSource Self}}">
+ 
+    <!--To change any of the p:Resources.x, go to UiPath.Wizard.Activities.Design.resx to change any of hte variables-->
+    <sap:WorkflowElementDialog.Resources>
+        <sapc:ArgumentToExpressionConverter x:Key="ArgumentToExpressionConverter" />
+    </sap:WorkflowElementDialog.Resources>
+    <Grid Width="450">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="{x:Static p:Resources.Authorization}" Grid.Row="2" Margin="0,0.333,10,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+
+                <StackPanel Height="3"/>
+
+                <!--Endpoint URL: API Endpoint URL-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                    <Label HorizontalAlignment="Left" Name="EndpointLabel" Width="{Binding Width, ElementName=UsernameLabel}"  Content="{x:Static p:Resources.Endpoint}"/>
+                    <sapv:ExpressionTextBox ExpressionType="s:String" Name="Endpoint"  MaxLines="1" OwnerActivity="{Binding Path=ModelItem}" Expression="{Binding Path=ModelItem.Endpoint,  Converter={StaticResource ArgumentToExpressionConverter}, Mode=TwoWay, ConverterParameter=In}" HorizontalAlignment="Right" Width="300" />
+                </StackPanel>
+                <StackPanel Height="3"/>
+
+                <!--Username to sign into API, alternatively can be API Key-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Label HorizontalAlignment="Left" Name="UsernameLabel" Width="{Binding ActualWidth, ElementName=EndpointLabel}" Content="{x:Static p:Resources.Username}"/>
+                    <sapv:ExpressionTextBox OwnerActivity="{Binding Path=ModelItem}" MaxLines="1" ExpressionType="s:String" Expression="{Binding Path=ModelItem.Username, Converter={StaticResource ArgumentToExpressionConverter}, Mode=TwoWay}" HorizontalAlignment="Right" Width="{Binding Width, ElementName=Endpoint}" />
+                </StackPanel>
+
+                <StackPanel Height="3"/>
+                <!--Password for API. Delete if using API Key-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Label HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=EndpointLabel}" Content="{x:Static p:Resources.Password}"/>
+                    <sapv:ExpressionTextBox  OwnerActivity="{Binding Path=ModelItem}" MaxLines="1" ExpressionType="s:String" Expression="{Binding Path=ModelItem.Password,Converter={StaticResource ArgumentToExpressionConverter}, Mode=TwoWay}" HorizontalAlignment="Right"  Width="{Binding ActualWidth, ElementName=Endpoint}" />
+                </StackPanel>
+
+                <StackPanel Height="10"/>
+                <StackPanel HorizontalAlignment="Center" Width="75">
+                    <Button x:Name ="LoadButton" Content="{x:Static p:Resources.Load}"  Click="Load_Click"  HorizontalAlignment="Stretch" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="4">
+            <Label Content="{x:Static p:Resources.LoadVal}" Width="100"/>
+            <!--holds the loaded values. if you want to show a different part of the object, change DisplayMemberPath-->
+            <ComboBox Name="loadedValues"  SelectionChanged="LoadedValues_SelectionChanged"/>
+
+        </StackPanel>
+    </Grid>
+</sap:WorkflowElementDialog>
