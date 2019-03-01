@@ -46,7 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wizard\UiPath.Wizard.csproj">
+    <ProjectReference Include="..\UiPath.Wizard.csproj">
       <Project>{845669d9-82e9-48c6-8fae-46bfd416870d}</Project>
       <Name>UiPath.Wizard</Name>
     </ProjectReference>

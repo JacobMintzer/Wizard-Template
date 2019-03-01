@@ -105,10 +105,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\UiPath.Wizard.Activities\UiPath.Wizard.Activities.csproj">
-      <Project>{169cefa5-e95a-4901-bf4e-8044300b31d6}</Project>
-      <Name>UiPath.Wizard.Activities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UiPath.Wizard.csproj">
       <Project>{845669d9-82e9-48c6-8fae-46bfd416870d}</Project>
       <Name>UiPath.Wizard</Name>

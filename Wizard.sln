@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wizard", "Wizard", "{CE37BC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Wizard.Activities.Design", "Wizard\UiPath.Wizard.Activities.Design\UiPath.Wizard.Activities.Design.csproj", "{08070987-5689-4AC7-BB4A-E75CD1F0A01E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Wizard.Activities", "UiPath.Wizard.Activities\UiPath.Wizard.Activities.csproj", "{169CEFA5-E95A-4901-BF4E-8044300B31D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Wizard.Activities", "Wizard\UiPath.Wizard.Activities\UiPath.Wizard.Activities.csproj", "{169CEFA5-E95A-4901-BF4E-8044300B31D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
